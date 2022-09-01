@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Button from "@mui/material/Button";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Shah from "./Shah";
+const name = "Shah";
+const bindAPI = "https://jsonplaceholder.typicode.com/comments";
 
 function App() {
+  // Changes the state changes
+  const [val, setVal] = useState("Red");
+  const newVal = () => {
+    setVal("Orange");
+  };
+  // End state
+
+  useEffect(() => {
+    const getdata = async () => {
+      const res = await axios.get(bindAPI);
+      console.log(res.data);
+    };
+    getdata();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Heada />
+        <h3>
+          Hello {name} your favorite color is {val}
+        </h3>
+        <Button variant="contained" onClick={newVal}>
+          Change your color
+        </Button>
       </header>
+      <br />
+      <br />
+      <hr />
+      <h3>--| Nested Functions |--</h3>
+      <hr />
+      <Shah></Shah>
     </div>
   );
 }
+
+const Heada = () => {
+  return <h1>React Hooks Tutorials</h1>;
+};
 
 export default App;

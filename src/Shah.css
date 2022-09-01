@@ -1,0 +1,22 @@
+div{
+    justify-content: center;
+    text-align: center;
+}
+.name{
+    color:darkorange;
+}
+.books{
+    padding: 5px;
+    width:300px;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-top: 2rem;
+    display: inline-block;
+    margin-left: 3rem;
+}
+
+@media screen and (min-width:768px) {
+   .books{
+    grid-template-columns: repeat(3,1fr);
+   } 
+}
